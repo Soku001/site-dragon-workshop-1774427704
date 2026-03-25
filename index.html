@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Workshop - Premium Jeweler in Bristol, UK</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Google Fonts Import */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap');
+
+        /* CSS Variables for Color Palette */
+        :root {
+            --primary-color: #1B4F72; /* Deep Teal */
+            --accent-color: #4a90d9; /* Light Blue */
+            --background-color: #f8f9fa; /* Off-white */
+            --text-dark: #1a1a2e; /* Dark text for contrast */
+            --text-light: #f8f9fa; /* Light text for dark backgrounds */
+        }
+
+        /* Base Styles & Typography */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Inter', sans-serif;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+
+        section {
+            padding: 4rem 1rem; /* Mobile-first padding */
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 5px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--text-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .section-subheading {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+        }
+
+        .navbar-brand {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand i {
+            margin-right: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links li a {
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav-links li a:hover {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/featured/1600x900/?Jeweler,professional') no-repeat center center/cover;
+            color: var(--text-light);
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        #hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        #hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        /* Services Section */
+        #services .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 3.5rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card .learn-more {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 3px;
+        }
+
+        .service-card .learn-more::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent-color);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card .learn-more:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--text-light);
+            padding: 6rem 1rem;
+        }
+
+        #about .about-content {
+            display: flex;
+            flex-direction: column; /* Stack on mobile */
+            gap: 3rem;
+            align-items: center;
+        }
+
+        #about .about-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        #about .about-text h2 {
+            text-align: center;
+        }
+
+        #about .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        #about .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Reviews Section */
+        #reviews {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 6rem 1rem;
+        }
+
+        #reviews h2, #reviews p {
+            color: var(--text-light);
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .review-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .review-card .stars {
+            color: gold;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .review-card p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .review-card .reviewer-name {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        /* New Features Section */
+        #features {
+            background-color: var(--background-color);
+            padding: 6rem 1rem;
+        }
+
+        #features .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border-bottom: 3px solid var(--accent-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-item i {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 6rem 1rem;
+        }
+
+        #contact h2, #contact p {
+            color: var(--text-light);
+        }
+
+        #contact .contact-grid {
+            display: flex;
+            flex-direction: column; /* Stack on mobile */
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        #contact .contact-info {
+            flex: 1;
+        }
+
+        #contact .contact-info ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 2rem;
+        }
+
+        #contact .contact-info ul li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.1rem;
+        }
+
+        #contact .contact-info ul li i {
+            margin-right: 1rem;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+        #contact .contact-info ul li a {
+            color: var(--text-light); /* Override default link color for contrast */
+        }
+        #contact .contact-info ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        #contact .contact-form {
+            flex: 1;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            color: var(--text-dark);
+        }
+
+        #contact .contact-form h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        #contact .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        #contact .contact-form input,
+        #contact .contact-form select,
+        #contact .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        #contact .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        #contact .contact-form .btn-primary {
+            width: auto;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--text-dark); /* Darker background for footer */
+            color: rgba(255, 255, 255, 0.7);
+            padding: 4rem 1rem;
+            font-size: 0.95rem;
+        }
+
+        .footer .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            color: var(--accent-color);
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-col p {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-col p i {
+            margin-right: 0.8rem;
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366; /* WhatsApp green */
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 2.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Generic image styling */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Responsive Design (Mobile First) */
+        @media (max-width: 767px) {
+            .navbar .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+                width: 100%; /* Ensure links take full width for easier tapping */
+            }
+            #hero {
+                min-height: 70vh;
+            }
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+            #hero p {
+                font-size: 1.1rem;
+            }
+            .section-heading {
+                font-size: 2rem;
+            }
+            .section-subheading {
+                font-size: 1rem;
+            }
+            .footer .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-col h4 {
+                text-align: center;
+            }
+            .footer-col ul {
+                text-align: center;
+            }
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 6rem 1.5rem;
+            }
+
+            .section-heading {
+                font-size: 3rem;
+            }
+
+            .section-subheading {
+                font-size: 1.3rem;
+            }
+
+            #hero h1 {
+                font-size: 4rem;
+            }
+
+            #hero p {
+                font-size: 1.5rem;
+            }
+
+            #about .about-content {
+                flex-direction: row; /* Row on larger screens */
+                text-align: left;
+            }
+
+            #about .about-text {
+                text-align: left;
+                padding-right: 3rem;
+            }
+
+            #contact .contact-grid {
+                flex-direction: row; /* Row on larger screens */
+            }
+
+            .navbar .container {
+                flex-wrap: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Navigation Bar -->
+    <nav class="navbar" id="home">
+        <div class="container">
+            <a href="#home" class="navbar-brand">
+                <i class="fas fa-gem"></i> Dragon Workshop
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="container">
+            <h1>Experience Exquisite Craftsmanship at Dragon Workshop</h1>
+            <p>Your trusted premium jeweler in Clifton, Bristol, offering bespoke designs and unparalleled service for every precious moment.</p>
+            <a href="#contact" class="btn btn-primary">Book a Free Consultation</a>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container text-center">
+            <h2 class="section-heading">Our Expertise in Every Detail</h2>
+            <p class="section-subheading">Discover the dedicated services that make Dragon Workshop your premier choice for fine jewelry.</p>
+
+            <div class="service-grid">
+                <div class="service-card">
+                    <i class="fas fa-ring"></i>
+                    <h3>Jeweler</h3>
+                    <p>Crafting and curating a stunning collection of fine jewelry, from engagement rings to bespoke pieces.</p>
+                    <a href="#contact" class="learn-more">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Free Consultation</h3>
+                    <p>Receive personalized advice and design guidance from our experts without any obligation.</p>
+                    <a href="#contact" class="learn-more">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-laptop-house"></i>
+                    <h3>Online Appointments</h3>
+                    <p>Conveniently schedule and conduct your jewelry consultations from the comfort of your home.</p>
+                    <a href="#contact" class="learn-more">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Expert Team</h3>
+                    <p>Benefit from the knowledge and skill of our experienced jewelers and design specialists.</p>
+                    <a href="#about" class="learn-more">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Quality Guaranteed</h3>
+                    <p>Every piece we create or offer meets the highest standards of materials and craftsmanship.</p>
+                    <a href="#contact" class="learn-more">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Customer Support</h3>
+                    <p>Our friendly and knowledgeable team is always here to assist you with any inquiries or needs.</p>
+                    <a href="#contact" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2 class="section-heading">About Dragon Workshop</h2>
+                <p class="section-subheading">Your trusted jeweler in the heart of Clifton, Bristol.</p>
+                <p>At Dragon Workshop, located at 47 Princess Victoria St, Clifton, Bristol, we pride ourselves on being a premium jeweler dedicated to timeless elegance and exceptional service. With a passion for fine craftsmanship, our <a href="#services">Expert Team</a> brings decades of experience to every piece, ensuring <a href="#services">Quality Guaranteed</a>.</p>
+                <p>We believe that every piece of jewelry tells a story. From bespoke engagement rings to stunning anniversary gifts, we offer a <a href="#services">Free Consultation</a> to help you find or create the perfect expression of your unique style and sentiment. Our commitment to excellence and personalized <a href="#services">Customer Support</a> sets us apart, making your experience with us as precious as the jewels we offer.</p>
+                <a href="#contact" class="btn btn-primary">Get in Touch Today</a>
+            </div>
+            <div class="about-image">
+                <img src="https://source.unsplash.com/featured/900x600/?Jeweler,team" alt="Dragon Workshop Expert Team" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews">
+        <div class="container text-center">
+            <h2 class="section-heading">What Our Clients Say</h2>
+            <p class="section-subheading">Hear from our valued customers across Bristol and beyond.</p>
+
+            <div class="review-grid">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Dragon Workshop provided an incredible <a href="#services">Free Consultation</a> for my engagement ring. Their <a href="#services">Expert Team</a> understood exactly what I wanted, and the final piece was beyond perfect. Truly <a href="#services">Quality Guaranteed</a>!"</p>
+                    <p class="reviewer-name">- Sarah M., Bristol</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"I utilized their <a href="#services">Online Appointments</a> service and it was so convenient. The <a href="#services">Customer Support</a> was exceptional, guiding me through the process of choosing a unique anniversary necklace. Highly recommend this <a href="#services">Jeweler</a>."</p>
+                    <p class="reviewer-name">- David P., Clifton</p>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Visited the shop on Princess Victoria St for a custom bracelet. The <a href="#services">Expert Team</a> made the design process a dream. The craftsmanship is flawless, reflecting true <a href="#services">Quality Guaranteed</a>. A five-star experience from a top-tier <a href="#services">Jeweler</a>."</p>
+                    <p class="reviewer-name">- Emily R., Bristol</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Features Section -->
+    <section id="features">
+        <div class="container text-center">
+            <h2 class="section-heading">Now Available: Enhance Your Experience</h2>
+            <p class="section-subheading">We are constantly innovating to provide you with seamless service and support.</p>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <i class="fas fa-comments"></i>
+                    <h3>Live Chat</h3>
+                    <p>Get instant answers to your questions and support from our team, 24/7.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Online Booking</h3>
+                    <p>Schedule your next consultation directly through our website, no calls needed.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Assistant</h3>
+                    <p>Our intelligent assistant is ready to help you with common inquiries automatically.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-phone-volume"></i>
+                    <h3>AI Voice Agent</h3>
+                    <p>Every call is answered promptly, ensuring you never miss a connection with us.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp Integration</h3>
+                    <p>Connect with us instantly on WhatsApp for quick replies and convenient communication.</p>
+                </div>
+                <div class="feature-item">
+                    <i class="fab fa-google"></i>
+                    <h3>Live Google Reviews</h3>
+                    <p>See our latest customer feedback and testimonials updated automatically on the site.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container text-center">
+            <h2 class="section-heading">Connect With Dragon Workshop</h2>
+            <p class="section-subheading">We are here to assist you with all your premium jewelry needs.</p>
+
+            <div class="contact-grid">
+                <div class="contact-info text-left">
+                    <h3>Contact Details</h3>
+                    <p>Reach out to us through your preferred method or visit our exquisite showroom.</p>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 47 Princess Victoria St, Clifton, Bristol BS8 4BX, United Kingdom</li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+441179732656">+44 117 973 2656</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@dragonworkshop.co.uk">info@dragonworkshop.co.uk</a></li>
+                    </ul>
+                    <p style="margin-top: 2rem;">We look forward to welcoming you to Dragon Workshop, where timeless beauty meets exceptional service.</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us an Enquiry</h3>
+                    <form action="#" method="POST">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="service">Interested Service</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a Service</option>
+                            <option value="Jeweler">Jeweler</option>
+                            <option value="Free Consultation">Free Consultation</option>
+                            <option value="Online Appointments">Online Appointments</option>
+                            <option value="Expert Team">Expert Team</option>
+                            <option value="Quality Guaranteed">Quality Guaranteed</option>
+                            <option value="Customer Support">Customer Support</option>
+                        </select>
+
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" required></textarea>
+
+                        <button type="submit" class="btn btn-primary">Submit Enquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col">
+                <h4>Dragon Workshop</h4>
+                <p>Your premier jeweler in Clifton, Bristol. Crafting exquisite pieces with unparalleled care and expertise.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="#services">Jeweler</a></li>
+                    <li><a href="#services">Free Consultation</a></li>
+                    <li><a href="#services">Online Appointments</a></li>
+                    <li><a href="#services">Expert Team</a></li>
+                    <li><a href="#services">Quality Guaranteed</a></li>
+                    <li><a href="#services">Customer Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> 47 Princess Victoria St, Clifton, Bristol BS8 4BX</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+441179732656">+44 117 973 2656</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@dragonworkshop.co.uk">info@dragonworkshop.co.uk</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; <span id="current-year"></span> Dragon Workshop. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/441179732656" class="whatsapp-float" target="_blank" aria-label="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- JavaScript for current year in footer -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
